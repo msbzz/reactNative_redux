@@ -5,28 +5,41 @@ import { Button, Card, TextInput, Title } from 'react-native-paper';
 import { LoginProps } from './types';
 
 import useSnackbar from 'src/contexts/Snackbar';
-import { logar } from 'src/services/usuarios';
+import { logar as logarService} from 'src/services/usuarios';
+import { logar } from 'src/store/reducers/usuario';
 
 import banner from 'assets/login/banner.png';
 import icon from 'assets/login/icon.png';
 import styles from './styles';
 import { useHeaderHeight } from '@react-navigation/elements';
+import { useDispatch } from 'react-redux';
 
 export default function Login({ navigation, setUsuarioLogado }: LoginProps) {
   const [emailOuCpf, setEmailOuCpf] = useState('');
   const [senha, setSenha] = useState('');
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const { criarMensagem } = useSnackbar();
-  const height = useHeaderHeight()
+  const height = useHeaderHeight();
+  const dispatch = useDispatch();
 
   const handleLogin = () => {
     if (!emailOuCpf) return criarMensagem.erro('Preencha um Email ou CPF');
     if (!senha) return criarMensagem.erro('Preencha sua senha');
-    const usuarioEncontrado = logar(emailOuCpf, senha);
-    if (!usuarioEncontrado) return criarMensagem.erro('Email/CPF ou senha incorretos');
-    setUsuarioLogado(usuarioEncontrado);
-    criarMensagem.sucesso('Login efetuado com sucesso!');
-    navigation.navigate('Home');
+
+    try {
+      
+      dispatch(logar({emailOuCpf, senha})) ;
+      criarMensagem.sucesso('Login efetuado com sucesso!');
+      navigation.navigate('Home');
+    
+    } catch (error) {
+    
+      if (error instanceof Error){
+          criarMensagem.erro(error.message);
+      }
+    } 
+    
+
   }
 
   return (
