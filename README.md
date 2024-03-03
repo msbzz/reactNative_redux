@@ -25,10 +25,22 @@ obs: neste curso não foram desenvolvidas qualquer tela da aplicação
   - Payload (Carga);
   - Ciclo de vida do Redux.
 
-## instalção das dependências
+## Instalção das dependências
 
 - yarn install
 
-## executar o projeto 
+## Executar o projeto 
 
 - npx expo start
+
+## Implementando um Store
+
+- Criação do store que sera usado para prover o estado para o aplicativo
+
+  - store inicial
+
+<img src="images/store.inicio.png" alt="" style="width: 15%; display: block;"/>
+
+   - disponibilizando store em app.tsx
+
+<img src="images/app.store.png" alt="" style="width: 15%; display: block;"/>   
