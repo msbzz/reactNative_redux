@@ -44,3 +44,24 @@ obs: neste curso não foram desenvolvidas qualquer tela da aplicação
    - disponibilizando store em app.tsx
 
 <img src="images/app.store.png" alt="" style="width: 15%; display: block;"/>   
+
+## Criando um slice
+
+  - Criação do reducer de usuario e sua referência em store
+    
+    - reducer usuario
+
+    <img src="images/reducer.usuario.png" alt="" style="width: 15%; display: block;"/> 
+
+    - integração em store 
+
+     <img src="images/store.reducer.usuario.png" alt="" style="width: 15%; display: block;"/> 
+
+    obs: antes da adição desse reducer de usuario a aplicação apresentava uma warning "Store does not have a valid reducer." 
+
+
+
+
+
+
+
