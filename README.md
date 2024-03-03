@@ -59,7 +59,11 @@ obs: neste curso não foram desenvolvidas qualquer tela da aplicação
 
     obs: antes da adição desse reducer de usuario a aplicação apresentava uma warning "Store does not have a valid reducer." 
 
+## Criando uma Action
 
+ - criação da action logar e é feito o seu export
+
+  <img src="images/reducer.action.logar.png" alt="" style="width: 15%; display: block;"/> 
 
 
 
