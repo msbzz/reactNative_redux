@@ -103,8 +103,25 @@ obs: neste curso não foram desenvolvidas qualquer tela da aplicação
 
  <img src="images/logs.autenticacao.png" alt="" style="width: 75%; display: block;"/> 
 
+ ## Ajuste na funcionalidade da mensagem após o login
+
+- Originalmente ao clicar no menu hambúrguer, no canto superior direito, se tinha a mensagem "Olá, Luiz Fernando!", devido a "logarService" ter passado para o reducer esta funcionalidade parou de funcionar
+
+- abaixo a funcionalidade original
+
+<img src="images/menu.lateral.logado.png" alt="" style="width: 15%; display: block;"/>
+
+- Após essa refatoração, o reducer de usuairo fornece todas as informações necessários para o drawer 
+
+ Realizando um teste de login é percebido que o usuairo está logado porem falta ainda concluir alguns pontos como o reconnhecimento das propriedades como o nome' 
 
 
+<img src="images/login.drawer.refatorado.png" alt="" style="width: 65%; display: block;"/>
+
+- alteração em 'usuario reducer'
+
+
+<img src="images/usuario.reducer.interface.png" alt="" style="width: 65%; display: block;"/>
 
 
 
