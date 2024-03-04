@@ -120,10 +120,25 @@ obs: neste curso não foram desenvolvidas qualquer tela da aplicação
 
 - alteração em 'usuario reducer'
 
-
 <img src="images/usuario.reducer.interface.png" alt="" style="width: 65%; display: block;"/>
 
 
+## Condlusão do ajuste da funcionalidade da mensagem após o login
+
+ - Devido em action.payload (reducers/usuario) o usuarioLogado receber o e-mail ou CPF e senha, e não espera esses dados como nome etc. Isto é definido como um conflito de tipagem, porque especificamente não tipamos nossa action.
+
+  - primeiramente é criada uma tipagem (interface) chamada 'LoginPayload' (vide imagem - amarelo)
+
+  - em seguida a tipagem da action através de 'PayloadAction' do 'Redux Toolkit'
+
+  - agora para finalizar a tipagem, modifica-se o 'state.usuarioLogado' para usar 'usuarioEncontrado' que vai conter todas as propriedades dos usuário ao invés do 'action.payload' que contem apenas dados de autenticação.
+
+<img src="images/logar.conclusao.uso.redux.png" alt="" style="width: 85%; display: block;"/>
 
 
+## Ação deslogar
+
+- tambem é necessário criar uma action no reducer para deslogar do aplicativo assim como corrigir o parametro em 'handleDeslogar()' na ativação da ação 'deslogar' pelo dispatcher()
+
+<img src="images/drawer.deslogar.png" alt="" style="width: 85%; display: block;"/>
 

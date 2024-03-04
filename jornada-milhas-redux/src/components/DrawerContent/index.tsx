@@ -7,7 +7,7 @@ import theme from 'src/config/theme';
  
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'src/store';
-import { logar } from 'src/store/reducers/usuario';
+import { deslogar } from 'src/store/reducers/usuario';
 interface DrawerContentProps extends DrawerContentComponentProps {}
 
 export default function DrawerContent({ navigation }: DrawerContentProps) {
@@ -15,8 +15,8 @@ export default function DrawerContent({ navigation }: DrawerContentProps) {
   const dispatch = useDispatch();
   const usuarioLogado = useSelector((state:RootState)=>state.usuario.usuarioLogado);
 
-  const deslogar = () => {
-    dispatch(logar(undefined));
+  const handleDeslogar = () => {
+    dispatch(deslogar());
     navigation.closeDrawer();
   }
 
@@ -41,7 +41,7 @@ export default function DrawerContent({ navigation }: DrawerContentProps) {
               icon='logout'
               mode='contained'
               buttonColor={theme.colors.error}
-              onPress={deslogar}
+              onPress={handleDeslogar}
             >
               Sair
             </Button>

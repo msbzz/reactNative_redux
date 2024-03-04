@@ -1,6 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+ 
+import { PayloadAction,createSlice } from '@reduxjs/toolkit';
 import {logar as logarService} from 'src/services/usuarios'
 import { Usuario } from 'src/types/usuario';
+
+interface LoginPayload{
+  emailOuCpf:Usuario['cpf'] | Usuario['email'],
+  senha: Usuario['senha']
+}
 
 interface InitialState{usuarioLogado: Usuario | undefined}
 
@@ -11,18 +17,22 @@ const usuarioSlice = createSlice({
 
   name: 'usuario',
   reducers: {
-     logar: (state, action) => {
+     logar: (state, action:PayloadAction<LoginPayload>) => {
       const usuarioEncontrado = logarService(
         action.payload.emailOuCpf, 
         action.payload.senha);
       if(!usuarioEncontrado) throw  new Error('Email/CPF ou senha incorretos');
        
-      state.usuarioLogado = action.payload;
+      state.usuarioLogado = usuarioEncontrado;
       console.log('state.usuarioLogado : ', state.usuarioLogado)
-    }
+    },
+
+     deslogar: (state) => {
+      state.usuarioLogado = undefined;
+    },
   }
 });
 
-export const { logar } = usuarioSlice.actions;
+export const { logar, deslogar } = usuarioSlice.actions;
 
 export default usuarioSlice.reducer;
