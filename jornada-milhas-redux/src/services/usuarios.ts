@@ -18,7 +18,7 @@ export const logar = (emailOuCpf: Usuario['email'] | Usuario['cpf'], senha: Usua
   const usuario = usuarios.find((usuarioNoServidor) =>
     [usuarioNoServidor.cpf, usuarioNoServidor.email].includes(emailOuCpf) && senha === usuarioNoServidor.senha
   );
-  console.log('logar (service)',usuario)
+  //console.log('logar (service)',usuario)
   return usuario;
 };
 

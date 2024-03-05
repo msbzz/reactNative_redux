@@ -142,3 +142,35 @@ obs: neste curso não foram desenvolvidas qualquer tela da aplicação
 
 <img src="images/drawer.deslogar.png" alt="" style="width: 85%; display: block;"/>
 
+## Implementando o cadastro
+
+ Considerando o codigo atual, será removido o 'cadastrarUsuario' que será feito pelo Redux.
+
+<img src="images/cadastro..handleSubmitOriginal.png" alt="" style="width: 85%; display: block;"/>
+
+Primeiro passo é criar a action 'cadastrar' em 'reducers/usuario'. Essa action é tipada usando a interface 'Omit' onde observa-se que o 'id' sera desconsiderado. Dentro a arrow function, alem de definir 'id' tambem é referido um array de 'usuarios' que sera declarado na interface 'InitialState' assim como na variavel 'initialState' que representa o estado inicial do reducer usuario. Voltando a 'cadastrar' se observa a adição do novo usuario vindo do payload juntamente com o id
+ 
+obs: o array de usuarios e originado em no mock 'servers' em 'assets'
+
+outro detalhe é a atualização do 'state' com o novo usuario
+
+<img src="images/action.cadastrar.usuario.png" alt="" style="width: 85%; display: block;"/>
+
+- Voltando a tela Cadastrar (index.ts) se faz a adaptação da chamada da action 
+
+<img src="images/tela.cadastrar.dispatch.cadastrar.png" alt="" style="width: 85%; display: block;"/>
+
+ Colocação de logs em reducers/usuario para na ação de cadastrar poder se pode observar os logs de 'usuario logado' e do array de usuarios
+
+
+- logs em reducers/usuario
+
+<img src="images/reducer.usuario.logs.png" alt="" style="width: 85%; display: block;"/>
+
+ - ação cadastrar
+
+<img src="images/acao.cadastro.logs.png" alt="" style="width: 85%; display: block;"/>
+
+
+
+

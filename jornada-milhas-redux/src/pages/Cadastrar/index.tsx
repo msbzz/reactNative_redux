@@ -4,7 +4,7 @@ import { Button, Card, Checkbox, TextInput, Title } from 'react-native-paper';
 
 import { Genero, Usuario } from 'src/types/usuario';
 import { CadastrarProps } from './types';
-import { cadastrarUsuario } from 'src/services/usuarios';
+ 
 
 import banner from 'assets/cadastrar/banner.png';
 import DatePicker from 'src/components/DatePicker';
@@ -12,6 +12,9 @@ import useSnackbar from 'src/contexts/Snackbar';
 
 import styles from './styles';
 import GenderPicker from 'src/components/GenderPicker';
+
+import { useDispatch } from 'react-redux';
+import { cadastrar } from 'src/store/reducers/usuario';
 
 export default function Cadastrar({ setUsuarioLogado, navigation }: CadastrarProps) {
   const [nome, setNome] = useState('');
@@ -28,6 +31,8 @@ export default function Cadastrar({ setUsuarioLogado, navigation }: CadastrarPro
   const [leu, setLeu] = useState(false);
   const { criarMensagem } = useSnackbar();
 
+  const dispatch = useDispatch();
+  
   const handleSubmit = () => {
     if (!leu) return criarMensagem.erro('Você deve concordar com os termos de uso');
     if (!nome) return criarMensagem.erro('Campo nome é obrigatório');
@@ -44,8 +49,9 @@ export default function Cadastrar({ setUsuarioLogado, navigation }: CadastrarPro
       senha
     }
 
-    const usuarioCadastrado = cadastrarUsuario(novoUsuario);
-    setUsuarioLogado(usuarioCadastrado);
+    //const usuarioCadastrado = cadastrarUsuario(novoUsuario);
+    dispatch(cadastrar(novoUsuario));
+    //setUsuarioLogado(usuarioCadastrado);
     criarMensagem.sucesso('Cadastro efetuado com sucesso!');
     navigation.navigate('Home');
   }
