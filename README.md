@@ -192,6 +192,32 @@ outro detalhe é a atualização do 'state' com o novo usuario
 
   <img src="images/routes.correcao.tipoagemParametros.png" alt="" style="width: 85%; display: block;"/>
 
+  O parâmetro `props: DrawerScreenProps<RootStackParamList, "Home">` na definição da função `Home` é uma especificação de tipagem TypeScript usada para descrever as propriedades que o componente `Home` espera receber. Essa tipagem é essencial em aplicativos que utilizam a biblioteca React Navigation para navegação entre telas em um aplicativo React Native. Vamos destrinchar os componentes dessa tipagem:
+
+DrawerScreenProps`
+
+- `DrawerScreenProps` é um tipo genérico fornecido pela React Navigation para componentes de tela que são parte de um navegador de gaveta (`DrawerNavigator`). Esse tipo é usado para descrever as props padrão que o componente da tela recebe de um `DrawerNavigator`, incluindo métodos para navegação (`navigate`, `goBack`, etc.), o estado da navegação e outros recursos específicos do navegador de gaveta (como abrir e fechar a gaveta).
+
+<RootStackParamList, "Home">`
+
+- Essa parte define os argumentos genéricos passados para `DrawerScreenProps`:
+  
+  1. `RootStackParamList`: É um tipo (geralmente um objeto TypeScript) que define todas as rotas e os parâmetros que elas podem aceitar no navegador de nível superior do aplicativo. Este tipo é usado para habilitar a verificação de tipo segura para os parâmetros de navegação em todo o aplicativo. Por exemplo, se você navegar para uma tela que espera um parâmetro, TypeScript pode alertá-lo se você esquecer de passar esse parâmetro ou passar um parâmetro do tipo errado.
+
+  2. `"Home"`: É uma string literal que especifica a chave da rota para a qual essas propriedades de navegação são relevantes. Isso significa que o componente `Home` está associado à chave `"Home"` dentro de `RootStackParamList`. Isso ajuda a garantir que você use os parâmetros corretos e métodos de navegação que são relevantes para a tela `Home`, proporcionando verificação de tipo no momento da compilação para as operações de navegação.
+
+ Por que usar esses parâmetros?
+
+Usar `DrawerScreenProps<RootStackParamList, "Home">` permite integrar o componente `Home` de forma segura e eficaz dentro do sistema de navegação do React Navigation. Essa abordagem oferece várias vantagens:
+
+1. **Verificação de Tipo Segura**: Garante que o componente `Home` use os parâmetros de navegação corretos, conforme definido em `RootStackParamList`, reduzindo a chance de erros em tempo de execução devido a navegações mal configuradas ou parâmetros incorretos.
+
+2. **Autocompletar e IntelliSense**: Ao usar IDEs ou editores que suportam TypeScript, desenvolvedores recebem sugestões automáticas e informações sobre os métodos de navegação, parâmetros de rota e opções disponíveis, melhorando a eficiência do desenvolvimento.
+
+3. **Manutenibilidade**: Facilita a manutenção e atualização do sistema de navegação do aplicativo. Mudanças nos parâmetros de rota ou na estrutura de navegação são refletidas em todo o código, graças à verificação de tipo do TypeScript.
+
+Em resumo, o uso de `DrawerScreenProps<RootStackParamList, "Home">` como parâmetro para o componente `Home` é uma prática recomendada para aplicativos React Native que utilizam TypeScript e React Navigation, pois melhora a segurança, eficiência e manutenibilidade do código.
+
  obs: anteriormente essa tipagem era indicada na interface
 
   <img src="images/home.index.parametros.png" alt="" style="width: 85%; display: block;"/>
