@@ -199,3 +199,7 @@ outro detalhe é a atualização do 'state' com o novo usuario
  - Apartir desse ponto as demais telas (Login,Cadastrar e Perfil) terão a mesma metodologia de retatoração. 
 
   obs: a titulo de estudo, referencias refatoradas estão sendo mantidas com comentários para reforçar o que foi mudado
+
+  - ultima validação
+
+  <img src="images/testeApp.apos.refatorar.png" alt="" style="width: 85%; display: block;"/>
