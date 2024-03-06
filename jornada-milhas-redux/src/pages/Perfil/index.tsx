@@ -1,5 +1,5 @@
 import { View, ScrollView } from 'react-native';
-import { PerfilProps } from './types';
+//import { PerfilProps } from './types';
 import Icon from '@expo/vector-icons/MaterialIcons';
 
 import styles from './styles';
@@ -11,8 +11,15 @@ import { Usuario } from 'src/types/usuario';
 import { excluirUsuario, mudarDadosUsuario } from 'src/services/usuarios';
 import useSnackbar from 'src/contexts/Snackbar';
 import theme from 'src/config/theme';
+import { DrawerScreenProps } from '@react-navigation/drawer';
+import { RootStackParamList } from 'src/routes';
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/store';
 
-export default function Perfil({ usuarioLogado, navigation, setUsuarioLogado }: PerfilProps) {
+export default function Perfil({ navigation }: DrawerScreenProps<RootStackParamList, "Perfil">) {
+
+  const usuarioLogado= useSelector((state:RootState)=>state.usuario.usuarioLogado)
+  
   const [nome, setNome] = useState(usuarioLogado?.nome);
   const [dataNascimento, setDataNascimento] = useState(usuarioLogado?.dataNascimento);
   const [genero, setGenero] = useState(usuarioLogado?.genero);
@@ -27,27 +34,28 @@ export default function Perfil({ usuarioLogado, navigation, setUsuarioLogado }: 
   const { criarMensagem } = useSnackbar();
 
   const handleSubmit = () => {
-    const novosDados: Usuario = {
-      id: usuarioLogado.id,
-      nome,
-      dataNascimento,
-      genero,
-      cpf,
-      telefone,
-      cidade,
-      estado,
-      email,
-      senha
-    }
-    mudarDadosUsuario(novosDados);
-    setUsuarioLogado(novosDados);
+    // const novosDados: Usuario = {
+    //   id: usuarioLogado?.id,
+    //   nome,
+    //   dataNascimento,
+    //   genero,
+    //   cpf,
+    //   telefone,
+    //   cidade,
+    //   estado,
+    //   email,
+    //   senha
+    // }
+    // mudarDadosUsuario(novosDados); NÃO ABORDADO NESSE CURSO
+    //setUsuarioLogado(novosDados);
     criarMensagem.sucesso('Dados alterados com sucesso!');
     navigation.navigate('Home');
   }
 
   const handleExcluir = () => {
-    excluirUsuario(usuarioLogado.id);
-    setUsuarioLogado(undefined);
+    // excluirUsuario(usuarioLogado.id);; NÃO ABORDADO NESSE CURSO
+
+    //setUsuarioLogado(undefined);
     criarMensagem.sucesso('Conta excluida com sucesso!');
     navigation.navigate('Home');
   }

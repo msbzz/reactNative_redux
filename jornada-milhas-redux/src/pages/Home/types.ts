@@ -1,6 +1,3 @@
-import { DrawerScreenProps } from '@react-navigation/drawer'
-import { RootStackParamList } from 'src/routes'
-import { Usuario } from 'src/types/usuario'
 import { TipoViagem } from 'src/types/viagem'
 
 export interface Filtros {
@@ -13,6 +10,6 @@ export interface Filtros {
   dataVolta?: string
 }
 
-export interface HomeProps extends DrawerScreenProps<RootStackParamList, "Home">{
-  usuarioLogado: Usuario | undefined
-}
+//export interface HomeProps extends DrawerScreenProps<RootStackParamList, "Home">{
+//  usuarioLogado: Usuario | undefined
+//}

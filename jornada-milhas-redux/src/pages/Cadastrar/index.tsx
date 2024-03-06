@@ -3,7 +3,7 @@ import { View, Text, Image, ScrollView, Pressable } from 'react-native';
 import { Button, Card, Checkbox, TextInput, Title } from 'react-native-paper';
 
 import { Genero, Usuario } from 'src/types/usuario';
-import { CadastrarProps } from './types';
+//import { CadastrarProps } from './types';
  
 
 import banner from 'assets/cadastrar/banner.png';
@@ -15,8 +15,10 @@ import GenderPicker from 'src/components/GenderPicker';
 
 import { useDispatch } from 'react-redux';
 import { cadastrar } from 'src/store/reducers/usuario';
+import { DrawerScreenProps } from '@react-navigation/drawer';
+import { RootStackParamList } from 'src/routes';
 
-export default function Cadastrar({ setUsuarioLogado, navigation }: CadastrarProps) {
+export default function Cadastrar({ navigation }: DrawerScreenProps<RootStackParamList, 'Cadastrar'>) {
   const [nome, setNome] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
   const [genero, setGenero] = useState<Genero | undefined>();

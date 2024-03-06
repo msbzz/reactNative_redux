@@ -171,6 +171,31 @@ outro detalhe é a atualização do 'state' com o novo usuario
 
 <img src="images/acao.cadastro.logs.png" alt="" style="width: 85%; display: block;"/>
 
+ 
+## Ultima refatoração
 
+- Remoção das variaveis de estado em todos objetos que tenham referencia a 'usuarioLogado' e 'setUsuarioLogado' devido a esta informação vir de redux 'const usuarioLogado= useSelector((state:RootState)=>state.usuario.usuarioLogado)', começando por 'routes.tsx'
 
+ obs: somente login e perfil precisaram desta referência
 
+ <img src="images/routes.refatoracao.final.png" alt="" style="width: 85%; display: block;"/>
+
+  obs: em 'compoments/drawerContent/index.ts' refatoraçai da interface "/interface DrawerContentProps extends DrawerContentComponentProps"
+
+ <img src="images/drawer.refatorado.final.png" alt="" style="width: 85%; display: block;"/>
+
+ - adaptação em 'Home/index'
+
+<img src="images/horme.refatoracao.final.png" alt="" style="width: 85%; display: block;"/>
+
+  - remoção da tipagem 'Home/types' de 'export interface HomeProps' devido a não haver mais passagem de parametros, porem, necessário se ter a indicação da tipagem
+
+  <img src="images/routes.correcao.tipoagemParametros.png" alt="" style="width: 85%; display: block;"/>
+
+ obs: anteriormente essa tipagem era indicada na interface
+
+  <img src="images/home.index.parametros.png" alt="" style="width: 85%; display: block;"/>
+
+ - Apartir desse ponto as demais telas (Login,Cadastrar e Perfil) terão a mesma metodologia de retatoração. 
+
+  obs: a titulo de estudo, referencias refatoradas estão sendo mantidas com comentários para reforçar o que foi mudado
